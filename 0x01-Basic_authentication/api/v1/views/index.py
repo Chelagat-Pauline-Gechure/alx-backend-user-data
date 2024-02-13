@@ -8,12 +8,23 @@ from api.v1.views import app_views
 # unauthorized access
 @app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
 def unauthorized() -> str:
-    """_summary_
+    """ GET /api/v1/unauthorized
 
     Returns:
-        str: _description_
+        str: 401 error
     """
     abort(401, description='Unauthorized')
+
+
+# forbidden access
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden() -> str:
+    """ GET /api/v1/forbidden
+
+    Returns:
+        str: 403 error
+    """
+    abort(403, description='Forbidden')
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
