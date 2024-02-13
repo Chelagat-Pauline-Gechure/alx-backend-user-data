@@ -50,4 +50,3 @@ class Auth:
             TypeVar('User'): Current user or None if not found.
         """
         return None
-
