@@ -1,0 +1,69 @@
+    1  ls
+    2  cd alx-backend-user-data/
+    3  ls
+    4  cd 0x01-Basic_authentication/
+    5  ls
+    6  curl "http://0.0.0.0:5000/api/v1/status" -vvv
+    7  git add .
+    8  git commit -m "0. Simple-basic-API"
+    9  git push
+   10  clear
+   11  ls
+   12  cd api
+   13  ls
+   14  cd v1
+   15  ls
+   16  vi app.py
+   17  ls
+   18  cd views
+   19  ls
+   20  vi index.py 
+   21  git add .
+   22  git commit -m "1. Error handler: Unauthorized"
+   23  git push
+   24  cd ..
+   25  git add. 
+   26  git add .
+   27  git commit -m "1. Error handler: Unauthorized"
+   28  git push
+   29  ls
+   30  cd v1
+   31  ls
+   32  cd views
+   33  ls
+   34  vi index.py 
+   35  curl "http://0.0.0.0:5000/api/v1/unauthorized"
+   36  git commit -m "1. Error handler: Unauthorized"
+   37  git add .
+   38  git commit -m "1. Error handler: Unauthorized"
+   39  git push
+   40  ls
+   41  pycodestyle index.py 
+   42  cd ..
+   43  pycodestyle app.py 
+   44  vi app.py 
+   45  git add .
+   46  git commit "Fixed app.py error"
+   47  git commit -m "Fixed app.py error"
+   48  git push
+   49  clear
+   50  history
+   51  history >> history.txt
+   52  ls
+   53  vi app.py 
+   54  ls
+   55  cd views
+   56  ls
+   57  vi index.py 
+   58  git add .
+   59  git commit -m "Forbidden error handling"
+   60  git push
+   61  cd ..
+   62  ls
+   63  git add .
+   64  git commit -m "Forbidden error handling function"
+   65  git push
+   66  curl "http://0.0.0.0:5000/api/v1/forbidden"
+   67  curl "http://0.0.0.0:5000/api/v1/forbidden" -vvv
+   68  history >> historry.tt
+   69  history >> historry.txt
