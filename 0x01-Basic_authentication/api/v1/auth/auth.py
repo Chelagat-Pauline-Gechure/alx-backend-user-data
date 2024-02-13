@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """ Authentication Module
 """
-
 from typing import List, TypeVar
 from flask import request
+import fnmatch
 
 
 class Auth:
@@ -24,19 +24,11 @@ class Auth:
         if path is None:
             return True
 
-        if excluded_paths is None or excluded_paths == []:
+        if excluded_paths is None or not excluded_paths:
             return True
 
-        if path in excluded_paths:
-            return False
-
         for excluded_path in excluded_paths:
-            if excluded_path.startswith(path):
-                return False
-            elif path.startswith(excluded_path):
-                return False
-            elif excluded_path[-1] == "*":
-                if path.startswith(excluded_path[:-1]):
+            if fnmatch.fnmatch(path, excluded_path):
                     return False
 
         return True
@@ -51,14 +43,9 @@ class Auth:
         Returns:
             str: Authorization header, or None if not found.
         """
-        if request is None:
-            return None
-        header = request.headers.get('Authorization')
-
-        if header is None:
-            return None
-
-        return header
+        if request is not None:
+            return request.headers.get('Authorization', None)
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
