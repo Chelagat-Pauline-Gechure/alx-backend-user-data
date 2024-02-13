@@ -24,7 +24,10 @@ class Auth:
             return True
 
         for excluded_path in excluded_paths:
-            if fnmatch.fnmatch(path, excluded_path):
+            if not excluded_path.endswith('/'):
+                excluded_path += '/'
+            
+            if path.startswith(excluded_path):
                 return False
 
         return True
