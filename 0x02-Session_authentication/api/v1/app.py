@@ -30,10 +30,7 @@ elif AUTH_TYPE == 'session_auth':
 
 @app.before_request
 def before_request():
-    """_summary_
-
-    Returns:
-        _type_: _description_
+    """Filtering each request before being handled
     """
     if auth is None:
         pass
