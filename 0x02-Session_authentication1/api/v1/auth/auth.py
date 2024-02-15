@@ -1,27 +1,21 @@
 #!/usr/bin/env python3
+""" Authentication Module
 """
-Module for authentication
-"""
-
-
 from typing import List, TypeVar
 from flask import request
-import os
+import fnmatch
 
 
 class Auth:
-    """_summary_
+    """ Class to manage API authentication
     """
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """_summary_
-
+        """ Check if authentication is required.
         Args:
-            path (str): _description_
-            excluded_paths (List[str]): _description_
-
+            paths(str): Path being accessed.
+            excluded_paths (List[str]): List of paths not to be autheniticated.
         Returns:
-                        bool: _description_
+            bool: True if authentication is required, false otherwise.
         """
         if path is None:
             return True
@@ -44,37 +38,23 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """_summary_
-
+        """
+        Method to retrieve authorization header from Flask request object.
         Args:
-            request (_type_, optional): _description_. Defaults to None.
-
+            request(flask.request): Flask request object.
         Returns:
-                        str: _description_
+            str: Authorization header, or None if not found.
         """
-        if request is None:
-            return None
-        # get header from the request
-        header = request.headers.get('Authorization')
-
-        if header is None:
-            return None
-
-        return header
-
-    def current_user(self, request=None) -> TypeVar('User'):
-        """_summary_
-        """
-
+        if request is not None:
+            return request.headers.get('Authorization', None)
         return None
 
-    def session_cookie(self, request=None):
-        """_summary_
-
-        Args:
-            request (_type_, optional): _description_. Defaults to None.
+    def current_user(self, request=None) -> TypeVar('User'):
         """
-        if request is None:
-            return None
-        session_name = os.getenv('SESSION_NAME')
-        return request.cookies.get(session_name)
+        Method to retrieve current user based on Flask request object.
+        Args:
+            request(flask.request): Flask request object.
+        Returns:
+            TypeVar('User'): Current user or None if not found.
+        """
+        return None
