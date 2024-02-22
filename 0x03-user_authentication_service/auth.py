@@ -156,3 +156,4 @@ class Auth:
             user.hashed_password = _hash_password(password)
             user.reset_token = None
             return None
+
